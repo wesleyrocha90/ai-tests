@@ -2,7 +2,13 @@ class Point {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.initial = false;
+    }
+
+    distance(other) {
+        let a = Math.pow(other.x - this.x, 2);
+        let b = Math.pow(other.y - this.y, 2);
+        let c = Math.sqrt(a + b);
+        return c;
     }
 
     toString() {
@@ -12,7 +18,6 @@ class Point {
 
 
 class Map {
-
     constructor() {
         this.citiesAmount = 10;
         this.points = [];
@@ -22,8 +27,6 @@ class Map {
         for (let i = 0; i < this.citiesAmount; i++) {
             this.points.push(new Point(floor(random(backWidth)), floor(random(backHeight))));
         }
-        this.points[floor(random(this.points.length))].initial = true;
-
         return this;
     }
 }
